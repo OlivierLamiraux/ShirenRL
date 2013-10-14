@@ -1,11 +1,3 @@
-var AFRO = AFRO || {};
-
-AFRO.Map = function(height, width) {
-  var me = this;
-  
-  me.height = height;
-  me.width = width;
-};
 define(function() {
   var Map, fn;
   
@@ -15,7 +7,7 @@ define(function() {
     this._height = height || 20;
     this._width = width || 20;
     
-  };
+  }
   
   fn = Map.prototype;
   
@@ -25,6 +17,18 @@ define(function() {
   
   fn.getWidth = function() {
     return this._width;
+  }
+  
+  fn.getRooms = function() {
+    return [];
+  }
+  
+  // Room
+  Map.Room = function (height, width) {
+  }
+  
+  // Cell
+  Map.Cell = function() {
   }
   
   return Map;
