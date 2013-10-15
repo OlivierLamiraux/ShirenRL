@@ -1,14 +1,14 @@
-define(["ItemManager"], function(ItemManager) {
-  describe("Item Manager", function() {
-    var itemManager;
+define(["Manager"], function(Manager) {
+  describe("Manager", function() {
+    var manager;
     
     beforeEach(function() {
-      itemManager = new ItemManager();
+      manager = new Manager();
     });
     
     it("should create an item for the given template", function() {
-      var dummy = itemManager.create('dummy');
-      var otherDummy = itemManager.create('dummy');
+      var dummy = manager.create('dummy');
+      var otherDummy = manager.create('dummy');
       
       dummy.test = 1;
       otherDummy.test = 2;
@@ -18,21 +18,21 @@ define(["ItemManager"], function(ItemManager) {
     });
     
     it("should create template", function() {
-      itemManager.addTemplate('sword', {
+      manager.addTemplate('sword', {
         equipementSlot : 'slot',
         maxLevel : 99
       });
       
-      itemManager.addTemplate('notSameName', {
+      manager.addTemplate('notSameName', {
         name : 'different'
       });
       
-      itemManager.addTemplate('withoutProperty');
+      manager.addTemplate('withoutProperty');
       
-      var sword = itemManager.create('sword');
-      var notSameName = itemManager.create('notSameName');
-      var withoutProperty = itemManager.create('withoutProperty');
-      var createWithProperty = itemManager.create('dummy', { count : 10 });
+      var sword = manager.create('sword');
+      var notSameName = manager.create('notSameName');
+      var withoutProperty = manager.create('withoutProperty');
+      var createWithProperty = manager.create('dummy', { count : 10 });
       
       // sword
       expect(sword.name).toEqual('sword');
@@ -51,20 +51,20 @@ define(["ItemManager"], function(ItemManager) {
     });
     
     it("should create template from another template", function() {
-      itemManager.addTemplate('sword', {
+      manager.addTemplate('sword', {
         equipementSlot : 'slot',
         maxLevel : 99
       });
-      itemManager.addTemplate('katana', 'sword', {
+      manager.addTemplate('katana', 'sword', {
         maxLevel : 50
       });
       
-      itemManager.addTemplate('fireband', 'sword', {
+      manager.addTemplate('fireband', 'sword', {
         name : 'utimate'
       });
       
-      var katana = itemManager.create('katana');
-      var fireband = itemManager.create('fireband');
+      var katana = manager.create('katana');
+      var fireband = manager.create('fireband');
       
       // sword
       expect(katana.name).toEqual('katana');

@@ -1,4 +1,4 @@
-define(["Bag", "ItemManager"], function(Bag, ItemManager) {
+define(["Bag", "Manager"], function(Bag, ItemManager) {
 
   describe("Bag", function() {
     var bag, 

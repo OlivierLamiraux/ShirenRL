@@ -6,7 +6,7 @@ require.config({
 });
 require([
   "spec/BagSpec",
-  "spec/ItemManagerSpec",
+  "spec/ManagerSpec",
   "spec/HeroSpec",
   "spec/ItemSpec",
   "spec/EventsSpec",

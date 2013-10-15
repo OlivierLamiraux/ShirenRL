@@ -1,4 +1,4 @@
-define(["Hero", "ItemManager"], function(Hero, ItemManager) {
+define(["Hero", "Manager"], function(Hero, ItemManager) {
   describe("Items", function() {
     var hero, game,
         itemManager = new ItemManager();
