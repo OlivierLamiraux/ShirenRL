@@ -1,22 +1,38 @@
 /*
- * This file is a template for create specification
+ * TODO : Dimention de l'ecran ?
  *
  */
-define(["Game", "Hero"], function(Game, Hero) {
+define(["Game"], function(Game) {
 
   describe("Game", function() {
-    var game;
+    var game,
+        customMap = ["0123456",
+                     ".1.....",
+                     "..2@...",
+                     "...3...",
+                     "....4.."],
+        mapCenter = { x : 3, y : 2};
     
     beforeEach(function () {
-      var hero = new Hero(),
-          map = {};
-      
-      game = new Game(hero, map);
-      
+      game = new Game();
+      game._map.loadAsciiMap(customMap);
     });
     
-    it("should be true", function() {
-      expect(true).toEqual(true);
+    it("can set hero position", function() {
+      game.heroPosition(mapCenter);
+      
+      expect(game._heroPosition).toBe(mapCenter);
+    });
+    
+    it("should get the current screen view relative to the hero position", function() {
+      game.heroPosition(mapCenter);
+      expect(game.screen()).toEqual(customMap, "Hero in center");
+      
+      game.heroPosition({ x : 0, y : 0});
+      expect(game.screen()).toEqual(customMap, "Hero in upper corner");
+      
+      game.heroPosition({ x : 6, y : 4});
+      expect(game.screen()).toEqual(customMap, "Hero in down corner");
     });
   });
 });
