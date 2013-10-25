@@ -1,3 +1,5 @@
+// ## Map
+// 
 define(function() {
   var Map, fn;
   
@@ -57,6 +59,12 @@ define(function() {
     return part;
   }
   
+  fn.isPassable = function(position) {
+    if (position.x > this._height || position.x < 0 || position.y > this._width || position.y < 0) {
+      return false;
+    }
+    return true;
+  }
   // Room
   Map.Room = function (height, width) {
   }

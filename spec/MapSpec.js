@@ -75,6 +75,14 @@ define(["Map"], function(Map) {
       });
     });
     
+    describe("should check if a position is passable", function() {
+      it("Outside the map", function() {
+        expect(map.isPassable({ x : 5, y : 999})).toBe(false);
+        expect(map.isPassable({ x : 999, y : 5})).toBe(false);
+        expect(map.isPassable({ x : -1, y : 5})).toBe(false);
+        expect(map.isPassable({ x : 5, y : -1})).toBe(false);
+      });
+    });
     
     describe("Cell", function() {
       var cell;

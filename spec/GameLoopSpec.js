@@ -1,7 +1,4 @@
-/*
- * This file is a template for create specification
- *
- */
+
 define(["GameLoop"], function(GameLoop) {
 
   describe("GameLoop", function() {

@@ -1,3 +1,6 @@
+
+// ## GameLoop
+// The game loop manage actor and tell which actors act each turn.
 define(function() {
   var GameLoop, fn;
   
@@ -17,6 +20,11 @@ define(function() {
   
   fn = GameLoop.prototype;
   
+  
+  // ### addActor
+  // Add a new `actor` in the game loop.
+  // An `actor` can have a method `getSpeed` return an integer. 
+  // This speed is relative to other actor speed.
   fn.addActor = function(actor) {
     _.defaults(actor, {
       getSpeed : function() { return 0; }
@@ -25,7 +33,9 @@ define(function() {
     this._clock = this._minActorSpeed();
   };
   
-  // An actor must implement the methode getSpeed for use the speed feature
+  // ### turn
+  // Iterate to the next turn.
+  // Return an array of actors acting this turn.
   fn.turn = function() {
     var clock = this._clock,
         actors;
